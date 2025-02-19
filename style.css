@@ -19,20 +19,26 @@ body{
   background-size: cover;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo {
   padding-left: 2vh;
   padding-top: 5vh;
   width: 60vh;
   height: auto;
+  min-width: 30vh;
 }
 
 .container {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
   gap: 3vh; /* Space between box and calendar */
   margin-top: 10vh;
-  height: 58vh;
+  height: 100%;
   padding: 0 4vh;
 }
 
@@ -160,8 +166,21 @@ header .icons span:hover{
   color: #aaa;
 }
 
-.days li.active{
-  color: #ff5050;
+.days li.selected {
+  color: #ff5050 !important;
+}
+
+.days li.active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px; /* Adjust to match your day size */
+  height: 40px;
+  border: 2px solid red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Center it */
+  z-index: -1; /* Ensures it stays behind the text */
 }
 
 .days li::before{
